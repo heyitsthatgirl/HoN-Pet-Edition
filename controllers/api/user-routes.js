@@ -1,5 +1,5 @@
 const router = require('express').Router();
-// const user = require(user model);
+const { User } = require('../../models');
 
 // /api/user/login
 router.post('/login', async (req, res) => {
@@ -10,16 +10,16 @@ router.post('/login', async (req, res) => {
         return;
     }
 
-    const userPass = userData.checkPassword(req.body.password);
-    if(!userPass) {
-        res.status(400).json({message: "user not found"});
-        return;
-    }
+    // const userPass = userData.checkPassword(req.body.password);
+    // if(!userPass) {
+    //     res.status(400).json({message: "user not found"});
+    //     return;
+    // }
 
     req.session.save(() => {
         req.session.userEmail = userData.email;
         req.session.logged_in = true;
-        req.status(200).json({message: "logged in!", userData});
+        res.status(200).json({message: "logged in!", userData});
     })
     } catch (err) {
         res.status(500).json(err);
@@ -37,6 +37,20 @@ router.post('/logout', (req, res) => {
     else {
         res.status(404).end();
     }
+});
+
+router.post('/create', async (req, res) => {
+    try {
+        const { email, password } = req.body;
+        const userData = await User.create({ email, password });
+        req.session.save(() => {
+          req.session.userEmail = userData.email;
+          req.session.logged_in = true;
+          res.status(200).json({ message: 'registered and logged in!', userData });
+        });
+      } catch (err) {
+        res.status(500).json(err);
+      }
 });
 
 module.exports = router;
