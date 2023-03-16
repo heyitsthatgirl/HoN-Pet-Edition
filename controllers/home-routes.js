@@ -1,20 +1,10 @@
 const router = require('express').Router();
-// const { Gallery, Painting } = require('../models');
+const withAuth = require('../utils/auth');
+const { User } = require('../models');
 
-router.get('/', async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
   try {
-    // const dbGalleryData = await Gallery.findAll({
-    //   include: [
-    //     {
-    //       model: Painting,
-    //       attributes: ['filename', 'description'],
-    //     },
-    //   ],
-    // });
-
-    // const galleries = dbGalleryData.map((gallery) =>
-    //   gallery.get({ plain: true })
-    // );
+   
 
     res.render('loginpage', {
       
@@ -24,22 +14,31 @@ router.get('/', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
 router.get('/homepage', async (req, res) => {
   try {
-    // const dbGalleryData = await Gallery.findAll({
-    //   include: [
-    //     {
-    //       model: Painting,
-    //       attributes: ['filename', 'description'],
-    //     },
-    //   ],
-    // });
-
-    // const galleries = dbGalleryData.map((gallery) =>
-    //   gallery.get({ plain: true })
-    // );
-
+  
     res.render('homepage');
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.get('/profilepage', async (req, res) => {
+  try {
+    console.log(req.session)
+    const userData = await User.findOne({
+      where: { email: req.session.userEmail,
+    }});
+    console.log(userData, "this is user data")
+    const user = userData.get({ plain: true });
+
+  res.render('profilepage',{
+  user,
+  logged_in: req.session.logged_in,
+  });
+
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

@@ -19,6 +19,7 @@ router.post('/login', async (req, res) => {
     req.session.save(() => {
         req.session.userEmail = userData.email;
         req.session.logged_in = true;
+        req.session.id = userData.id
         res.status(200).json({message: "logged in!", userData});
     })
     } catch (err) {
@@ -46,6 +47,7 @@ router.post('/create', async (req, res) => {
         req.session.save(() => {
           req.session.userEmail = userData.email;
           req.session.logged_in = true;
+          req.session.id = userData.id
           res.status(200).json({ message: 'registered and logged in!', userData });
         });
       } catch (err) {
