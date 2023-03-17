@@ -8,6 +8,7 @@ function submitForm(e) {
     const name = document.getElementById("name");
     const files = document.getElementById("files");
     const formData = new FormData();
+  
     formData.append("name", name.value);
     for(let i =0; i < files.files.length; i++) {
             formData.append("files", files.files[i]);

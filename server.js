@@ -62,8 +62,10 @@ app.use(routes);
 app.post("/upload_files", upload.array("files"), uploadFiles);
 
 function uploadFiles(req, res) {
-    console.log(req.body);
-    console.log(req.files);
+   
+    console.log(req.body,"+++++++");
+    console.log(req.files, "----------");
+    console.log(req.files[0].filename,"]]]]]]]]]")
     res.json({ message: "Successfully uploaded files" });
     // res.send(req.files);
 }

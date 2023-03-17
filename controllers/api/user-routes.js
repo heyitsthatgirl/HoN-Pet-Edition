@@ -4,7 +4,9 @@ const { User } = require('../../models');
 // /api/user/login
 router.post('/login', async (req, res) => {
     try {
+        console.log("start login");
     const userData = await User.findOne({where: {email: req.body.email}});
+    console.log("here is userdata", userData);
     if(!userData) {
         res.status(400).json({message: "user not found"});
         return;
@@ -20,8 +22,10 @@ router.post('/login', async (req, res) => {
         req.session.userEmail = userData.email;
         req.session.logged_in = true;
         req.session.id = userData.id
+        console.log("here is req.session",req.session);
         res.status(200).json({message: "logged in!", userData});
     })
+    console.log('end login');
     } catch (err) {
         res.status(500).json(err);
     }
@@ -29,7 +33,7 @@ router.post('/login', async (req, res) => {
 
 });
 
-router.post('/logout', (req, res) => {
+router.get('/logout', (req, res) => {
     if(req.session.logged_in) {
         req.session.destroy(() => {
             res.status(204).end();

@@ -2,20 +2,20 @@ const router = require('express').Router();
 const withAuth = require('../utils/auth');
 const { User } = require('../models');
 
-router.get('/', withAuth, async (req, res) => {
+router.get('/',async (req, res) => {
   try {
-   
-
-    res.render('loginpage', {
-      
-    });
+    if (!req.session.logged_in) {
+      res.render('loginpage');}
+      else{
+        res.redirect('/homepage')
+      };
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
 
-router.get('/homepage', async (req, res) => {
+router.get('/homepage', withAuth, async (req, res) => {
   try {
   
     res.render('homepage');
