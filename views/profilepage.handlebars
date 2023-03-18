@@ -24,10 +24,20 @@
             <button class="submit-btn" type='submit'>Upload</button>
         </form>
     </div>
+    <div class="logoutB">
+        <button id = "logout" type="button">Logout</button>
+    </div>
+
+    <section class="pics">
+  {{#each uPics as |pics|}}
+  {{> picsP}}
+  {{/each}}
+    </section>
+
+
+
+    <script src="/JS/logout.js"></script>
     <script src='/JS/script.js'></script>
-
-
-
 
 
 {{!-- grid cards --}}

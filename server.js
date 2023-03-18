@@ -9,7 +9,7 @@ const cloudinary = require("cloudinary").v2;
 require("dotenv").config();
 const { cloudinaryConfig, uploader } = require("./config/cloudinaryConfig");
 // const { urlencoded } = require("body-parser");
-const pics = require('./models/pics');
+const pics = require("./models/pics");
 
 const storage = multer.memoryStorage();
 const multerUploads = multer({ storage }).single("image2");
@@ -100,13 +100,16 @@ app.post("/upload", multerUploads, (req, res) => {
 				const image = result.url;
 				console.log("This is the image url", image);
 				console.log(req.session.userEmail);
-				const pCreate = await pics.create({email: req.session.userEmail, file: image})
+				const pCreate = await pics.create({
+					email: req.session.userEmail,
+					file: image,
+				});
 				const newPic = pCreate.get({ plain: true });
 
-				if(!pCreate){
+				if (!pCreate) {
 					res.status(400).json({
-						message:"something went wrong, please try again",
-					})
+						message: "something went wrong, please try again",
+					});
 				}
 
 				return res.status(200).json({
@@ -116,7 +119,6 @@ app.post("/upload", multerUploads, (req, res) => {
 						newPic,
 					},
 				});
-				
 			})
 			.catch((err) =>
 				res.status(400).json({
@@ -127,7 +129,6 @@ app.post("/upload", multerUploads, (req, res) => {
 				})
 			);
 	}
-	
 });
 
 // function uploadFiles(req, res) {
