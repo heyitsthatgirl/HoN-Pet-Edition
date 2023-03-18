@@ -16,7 +16,6 @@ Pics.init(
     email: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
       // references: {model:"User", key:"User_email"},
       validate: {
         isEmail: true,
