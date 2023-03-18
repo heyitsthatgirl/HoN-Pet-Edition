@@ -9,6 +9,7 @@ const cloudinary = require("cloudinary").v2;
 require("dotenv").config();
 const { cloudinaryConfig, uploader } = require("./config/cloudinaryConfig");
 // const { urlencoded } = require("body-parser");
+const pics = require('./models/pics');
 
 const storage = multer.memoryStorage();
 const multerUploads = multer({ storage }).single("image2");
@@ -98,7 +99,7 @@ app.post("/upload", multerUploads, (req, res) => {
 			.then(async (result) => {
 				const image = result.url;
 				console.log("This is the image url", image);
-				
+				console.log(req.session.userEmail);
 				const pCreate = await pics.create({email: req.session.userEmail, file: image})
 				const newPic = pCreate.get({ plain: true });
 
