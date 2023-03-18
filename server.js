@@ -95,14 +95,27 @@ app.post("/upload", multerUploads, (req, res) => {
 		const file = dataUri(req).content;
 		return uploader
 			.upload(file)
-			.then((result) => {
+			.then(async (result) => {
 				const image = result.url;
+				console.log("This is the image url", image);
+				
+				const pCreate = await pics.create({email: req.session.userEmail, file: image})
+				const newPic = pCreate.get({ plain: true });
+
+				if(!pCreate){
+					res.status(400).json({
+						message:"something went wrong, please try again",
+					})
+				}
+
 				return res.status(200).json({
 					messge: "Your image has been uploded successfully to cloudinary",
 					data: {
 						image,
+						newPic,
 					},
 				});
+				
 			})
 			.catch((err) =>
 				res.status(400).json({
@@ -113,6 +126,7 @@ app.post("/upload", multerUploads, (req, res) => {
 				})
 			);
 	}
+	
 });
 
 // function uploadFiles(req, res) {
