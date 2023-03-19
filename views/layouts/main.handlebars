@@ -8,24 +8,29 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    {{!-- style to fit nav bar better --}}
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-      <li class="nav-item1">
-        <button class="nav-link">Sorted</button>
-      </li>
-      <li class="nav-item2">
-        <button id = "Profile" class="nav-link" href="/profilepage">Profile</button>
-      </li>
-      <li class="nav-item3">
-        <button class="nav-link"href="Add pic">Add pic</button>
-      </li>
-      
-      
-  </div>
-</nav>
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col">
+          <nav class="navbar navbar-expand-lg navbar-light bg-light">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item1">
+                  <button class="btn btn-outline-success" type="button">Home</button>
+                </li>
+                <li class="nav-item2">
+                  <button id = "Profile" class="btn btn-outline-success" href="/profilepage">Profile</button>
+                </li>
+                <!-- <li class="nav-item3">
+                  <button class="btn btn-outline-success" href="Add pic">Login</button>
+                </li> -->
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
 
-      {{{body}}}
+<div>
+  {{{body}}}
+</div> 
   </body>
 </html>

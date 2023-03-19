@@ -1,59 +1,66 @@
-<main class="form-signin w-100 m-auto">
-  <form>
-
-    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
-
-    <div class="form-floating">
-      <input
-        type="email"
-        class="form-control"
-        id="floatingInput"
-        placeholder="name@example.com"
-      />
-      <label for="floatingInput">Email address</label>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col">
+      <main class="form-signin w-100 m-auto">
+        <form>
+      
+          <h1 class="h3 mb-3 fw-normal">Please sign in!</h1>
+      
+          <div class="form-floating">
+            <input
+              type="email"
+              class="form-control"
+              id="floatingInput"
+              placeholder="name@example.com"
+            />
+            <label for="floatingInput">Email address</label>
+          </div>
+          <div class="form-floating">
+            <input
+              type="password"
+              class="form-control"
+              id="floatingPassword"
+              placeholder="Password"
+            />
+            <label for="floatingPassword">Password</label>
+          </div>
+      
+          <div class="checkbox mb-3">
+            <label>
+              <input type="checkbox" value="remember-me" />
+              Remember me
+            </label>
+          </div>
+          <button id="login" class="w-100 btn btn-lg btn-primary" type="button">Sign in</button>
+        </form>
     </div>
-    <div class="form-floating">
-      <input
-        type="password"
-        class="form-control"
-        id="floatingPassword"
-        placeholder="Password"
-      />
-      <label for="floatingPassword">Password</label>
+    <div class="col">
+      <form>
+        <h1 class="h3 mb-3 fw-normal">Please sign up!</h1>
+        <div class="form-sign-up">
+          <!-- <label for="exampleInputEmail1">Email address</label> -->
+          <input
+            type="email"
+            class="form-control"
+            id="newEmail"
+            aria-describedby="emailHelp"
+            placeholder="Email address"
+          />
+          <small id="emailHelp" class="form-text text-muted">We'll never share your
+            email with anyone else.</small>
+        </div>
+        <div class="form-sign-uppw">
+          <!-- <label for="exampleInputPassword1">Password</label> -->
+          <input
+            type="password"
+            class="form-control"
+            id="newPassword"
+            placeholder="Password"
+          />
+        </div>
+        <button id="submit" type="button" class="btn btn-primary">Sign up</button>
+      </form>
     </div>
-
-    <div class="checkbox mb-3">
-      <label>
-        <input type="checkbox" value="remember-me" />
-        Remember me
-      </label>
-    </div>
-    <button id="login" class="w-100 btn btn-lg btn-primary" type="button">Sign in</button>
-  </form>
-
-  <form>
-    <div class="form-sign-up">
-      <label for="exampleInputEmail1">Email address</label>
-      <input
-        type="email"
-        class="form-control"
-        id="newEmail"
-        aria-describedby="emailHelp"
-        placeholder="Enter email"
-      />
-      <small id="emailHelp" class="form-text text-muted">We'll never share your
-        email with anyone else.</small>
-    </div>
-    <div class="form-sign-uppw">
-      <label for="exampleInputPassword1">Password</label>
-      <input
-        type="password"
-        class="form-control"
-        id="newPassword"
-        placeholder="Password"
-      />
-    </div>
-    <button id="submit" type="button" class="btn btn-primary">Sign up</button>
-  </form>
-</main>
+  </div>
+</div>
 <script src="/JS/Login.js"></script>
