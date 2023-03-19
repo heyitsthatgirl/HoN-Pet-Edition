@@ -100,11 +100,13 @@ app.post("/upload", multerUploads, (req, res) => {
 				const image = result.url;
 				console.log("This is the image url", image);
 				console.log(req.session.userEmail);
-				const pCreate = await pics.create({
-					email: req.session.userEmail,
+				const pCreate = await pics.bulkCreate({
+					email: "hope2@me.com",
 					file: image,
 				});
+        console.log("this is pCreate", pCreate);
 				const newPic = pCreate.get({ plain: true });
+        
 
 				if (!pCreate) {
 					res.status(400).json({
