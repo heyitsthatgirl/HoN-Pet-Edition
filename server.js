@@ -105,7 +105,9 @@ app.post("/upload", multerUploads, (req, res) => {
 					email: req.session.userEmail,
 					file: image,
 				});
+        console.log("this is pCreate", pCreate);
 				const newPic = pCreate.get({ plain: true });
+        
 
 				if (!pCreate) {
 					res.status(400).json({

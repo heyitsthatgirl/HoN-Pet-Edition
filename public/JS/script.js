@@ -1,4 +1,5 @@
 // script.js
+const Home = document.getElementById("Home");
 const form = document.getElementById("form");
 
 form.addEventListener("submit", submitForm);
@@ -22,4 +23,10 @@ function submitForm(e) {
 	})
 		.then((res) => console.log(res))
 		.catch((err) => ("Error occured", err));
+}
+
+Home.addEventListener("click", goHome);
+
+function goHome() {
+	document.location.replace('/homepage');
 }
