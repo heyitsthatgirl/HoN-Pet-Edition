@@ -134,6 +134,32 @@ app.post("/upload", multerUploads, (req, res) => {
 	}
 });
 
+app.post("/api/pics/vote", async (req, res) => {
+	try {
+	  pics.findOne({
+		where: { id: req.body.pictId }
+	  }).then( p => {
+		  if (p) {
+			return p.update(
+			  { vote: p.vote + 1 },
+			  { where: { id: req.body.pictId }}
+			).then( r => {
+			  console.log(r)
+			  res.status(200).json({ message: "Updated ", r });
+			}).catch(err => {
+			  res.status(500).json(err);
+			})
+		  } else {
+			console.error('Error : The Picture Id = [' + pictId + '] does not exist !');
+			res.status(400).json({ message: 'Error : The Picture Id = [' + pictId + '] does not exist !' });
+		  }
+	  }).catch(err => {
+		res.status(500).json(err);
+	  });
+	} catch (err) {
+	  res.status(500).json(err);
+	}
+  });
 // function uploadFiles(req, res) {
 // 	console.log(req.body, "+++++++");
 // 	console.log(req.files, "----------");

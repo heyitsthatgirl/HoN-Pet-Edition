@@ -1,22 +1,21 @@
-// target profile button
-// const voteUpdate = require('../../utils/pics');
 const Profile = document.getElementById("Profile");
 const Hot = document.getElementById("hot");
 const Not = document.getElementById("not");
-// const ID = 0;
+var pictId = 1;
 // take user to their profile page
 Profile.addEventListener("click", async function () {
   console.log("here is the button");
   document.location.replace("/profilepage");
 });
-
 Hot.addEventListener("click", async function () {
-  console.log("HOT");
-  // voteUpdate(ID);
-  // ID++;
+  const response = await fetch("/api/pics/vote", {
+    method: "POST",
+    body: JSON.stringify({ pictId }),
+    headers: { "Content-type": "application/json" },
+  });
+  pictId++;
 });
-
 Not.addEventListener("click", async function () {
   console.log("NOT");
-  // ID++;
+  pictId++;
 });

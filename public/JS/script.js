@@ -7,11 +7,11 @@ form.addEventListener("submit", submitForm);
 
 function submitForm(e) {
   e.preventDefault();
-  const name = document.getElementById("name");
+  // const name = document.getElementById("name");
   const files = document.getElementById("image2");
   const formData = new FormData();
 
-  formData.append("name", name.value);
+  // formData.append("name", name.value);
   for (let i = 0; i < files.files.length; i++) {
     formData.append("image2", files.files[i]);
   }
