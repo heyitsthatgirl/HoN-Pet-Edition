@@ -26,7 +26,8 @@ Pics.init(
       allowNull: false,
     },
     vote:{
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      allNull: true
     }
   },
   {
