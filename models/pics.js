@@ -24,6 +24,9 @@ Pics.init(
     file:{
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    vote:{
+      type: DataTypes.INTEGER
     }
   },
   {
