@@ -70,7 +70,7 @@ router.get("/profilepage", async (req, res) => {
 			include: [
 				{
           model:pics,
-					attributes: ["file"],
+					attributes: ["file", "vote"],
 				},
 			],
 		});
