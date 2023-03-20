@@ -1,20 +1,9 @@
-const Sorted = document.getElementById("Sorted");
+// target profile button
 const Profile = document.getElementById("Profile");
-const Addpic = document.getElementById("Add-pic");
 
+// take user to their profile page
+Profile.addEventListener("click", async function () {
+  console.log("here is the button");
 
-
-
-Profile.addEventListener("click", async function() {
-  console.log("here is the button")
-  // const email = document.querySelector('#email-login').value.trim();
-  // const password = document.querySelector('#password-login').value.trim();
-  
-  // const response = await fetch("/api/user/login", {method: "GET", body: JSON.stringify({email, password}), headers: {"Content-type": "application/json"}});
-  // const data = response.json();
-
-  
-document.location.replace('/profilepage')
-  
-      
+  document.location.replace("/profilepage");
 });
