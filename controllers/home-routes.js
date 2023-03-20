@@ -17,6 +17,37 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/homepage", withAuth, async (req, res) => {
+	// try {
+	// 	console.log(req.session);
+	// 	const displayPic = await pics.findOne({
+	// 		where: { id: req.body.file },
+	// 		include: [
+	// 			{
+	// 			attributes: ["file"]
+	// 			}
+	// 		],
+	// 	});
+	// 	// const user = userData.get({ plain: true });
+
+	// 	// const picsData = await pics.findAll(req.params.email, {
+	// 	// 	// where: { email: req.session.userEmail },
+	// 	// 	include: [
+	// 	// 		{
+    //     //   model:pics,
+	// 	// 			attributes: ["file"],
+	// 	// 		},
+	// 	// 	],
+	// 	// });
+    // const homePic = displayPic.map((pics) =>
+    // //   pics.get({ plain: false })
+    // ); 
+	// 	res.render("homepage", {
+	// 		homePic,
+	// 	});
+	// } catch (err) {
+	// 	console.log(err);
+	// 	res.status(500).json(err);
+	// }
 	try {
 		res.render("homepage");
 	} catch (err) {
