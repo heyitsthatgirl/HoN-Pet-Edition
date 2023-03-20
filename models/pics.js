@@ -27,7 +27,7 @@ Pics.init(
     },
     vote:{
       type: DataTypes.INTEGER,
-      allNull: true
+      allowNull: true
     }
   },
   {
