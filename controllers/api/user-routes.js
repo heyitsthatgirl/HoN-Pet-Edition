@@ -42,6 +42,7 @@ router.post("/logout", (req, res) => {
 });
 
 router.post("/create", async (req, res) => {
+  console.log("create route was hit")
   try {
     // const { email, password } = req.body;
     const userData = await User.create({
@@ -55,6 +56,7 @@ router.post("/create", async (req, res) => {
       res.status(200).json({ message: "registered and logged in!", userData });
     });
   } catch (err) {
+    console.log("Here is catch err", err)
     res.status(500).json(err);
   }
 });
